@@ -21,6 +21,7 @@
     <%= form_tag '/users', method: 'post' do %>
 
     <input type="email" name="email" value="" placeholder="Email" class= "input-signup">
+    <input type="password" name="password" value="" placeholder="Create a password" class= "input-signup">
     <input type="text" name="full_name" value="" placeholder="Full Name" class= "input-signup">
     <input type="text" name="address_1" value="" placeholder="Address Line 1" class= "input-signup">
     <input type="text" name="address_2" value="" placeholder="Address Line 2" class= "input-signup">
@@ -35,24 +36,22 @@
     </select>
 
     <input type="text" name="zip_code" value="" placeholder="Postcode/Zip" class= "input-signup">
-    <input type="password" name="password" value="" placeholder="Create a password" class= "input-signup">
     <button class="btn btn-primary btn-lg round">Sign Up</button>
     <% end %>
   </div>
 </div>
 <% else %>
 
-<!-- <div class="column one-half">
+<div class="column one-half">
   <div>
-    Hey there <%= user.fullName %>
+    Hey there <%= current_user.full_name %>
   </div>
-<div class="login-btn"><a href="/login">Login</a></div> -->
+<div class="login-btn"><a href="/login">Login</a></div>
 
-<a href="/session/[:id]" class="spacing">Start guiding</a>
+Start guiding
 
-<form action="/session" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <button>logout</button>
-</form>
+  <%= form_tag '/session', method: 'delete' do %>
+    <button>logout</button>
+  <% end %>
 
 <% end %>
