@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: :create
+
   def create
     user = User.new(email: params[:email],
                     full_name: params[:full_name],
@@ -13,6 +15,12 @@ class UsersController < ApplicationController
     if user.save
       redirect_to "/users/#{user.id}"
     else
+      if user.errors.messages.key?(:email)
+        flash[:error] = "Email has already been taken."
+      else
+        flash[:error] = "Check that all required details have been filled in correctly."
+      end
+
       redirect_to :root
     end
   end
