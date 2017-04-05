@@ -154,6 +154,7 @@ body {
   top: 40px;
   text-align: left;
   list-style: none;
+  z-index: 5;
 }
 
 .suggestions li {

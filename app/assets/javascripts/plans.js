@@ -24,10 +24,18 @@ $(function() {
 
   $suggestions.on('click', 'li', function() {
     var location = $(this).text();
+    var placeId = $(this).attr('data-id');
 
     $search.val(location);
-    $selectedLocation.val(location);
+    $selectedLocation.val(placeId).change();
+  });
+
+  $('*').click(function() {
     $suggestions.empty();
+  });
+
+  $selectedLocation.change(function() {
+    // update the map
   });
 
   $('.plan').on('click', 'header', function() {
