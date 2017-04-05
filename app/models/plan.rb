@@ -7,4 +7,10 @@ class Plan < ApplicationRecord
   belongs_to :user
   has_many :saved_events, dependent: :destroy
   has_many :saved_eats, dependent: :destroy
+
+  attr_reader :address
+
+  after_initialize do
+    @address = get_address(latitude, longitude)
+  end
 end

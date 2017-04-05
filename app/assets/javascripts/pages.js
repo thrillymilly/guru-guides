@@ -6,7 +6,7 @@ $(function() {
     var countryCode = $countries.find(':selected').val();
 
     $.ajax({
-      url: '/api/countries/' + countryCode
+      url: '/api/locations/countries/' + countryCode
     }).done(function(states) {
       $states.empty();
 
