@@ -1,27 +1,17 @@
-<input type="text" class="four columns" placeholder="Search for a location">
+<div class="search-area">
+  <div class="search-wrapper">
+    <input type="hidden" id="selected-location">
+    <input type="text" class="search" placeholder="Search for a location">
+    <ul class="suggestions"></ul>
+  </div>
+</div>
 
 <div class="u-cf planner">
-  <div class="three columns plans">
-    <header>Journey Planner</header>
-    <div class="contents">
-      <% current_user.plans.each do |plan| %>
-      <div class="plan">
-        <p><%= plan.address %></p>
-        <div class="events">
-          <header>Events</header>
-          <div class="items">
-            <% plan.saved_events.each do |saved_event| %>
-            <div>
-              <div><%= saved_event.event.title %></div>
-              <div><%= saved_event.event.info %></div>
-            </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    </div>
-  </div>
+  <%= render "plans" %>
   <div class="six columns map">Map goes here</div>
-  <div class="three columns events-eats">Hello</div>
+  <div class="three columns events-eats">Search for a location to view what's happening around it</div>
 </div>
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVJjOAHWGEr2E1f5AMR2RZDoJ8maw41N4&callback=showMap">
+</script>

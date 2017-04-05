@@ -18,9 +18,9 @@
           <%= form_tag '/session', method: 'delete' do %>
             <button class="nav-button u-pull-right">logout</button>
           <% end %>
-
           <a class="button nav-button account-btn" href=<%="/users/#{current_user.id}"%>>Account</a>
-        <% else %>
+
+      <% else %>
 
         <%= form_tag '/session', method: 'post' do %>
           <label for="">email</label>

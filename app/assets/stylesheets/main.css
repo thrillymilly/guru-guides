@@ -24,8 +24,10 @@ body {
 }
 
 .nav-button {
-  display: block;
+  width: 100%;
+  padding: 0 1em;
 }
+
 
 .nav-main-right {
   display: flex;
@@ -102,7 +104,6 @@ body {
   border: 3px solid #666;
   border-radius: 5px;
   background: #e3e9ec;
-  height: 80%;
 }
 
 .plans > header {
@@ -123,12 +124,67 @@ body {
   padding: .5em;
 }
 
-.events {
+.events, .eats {
   background: lightblue;
+  margin-bottom: 1em;
 }
 
 .items {
   display: none;
+  background: #f0f0f0;
+}
+
+.search-area {
+  text-align: center;
+}
+
+.search-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.search {
+  width: 30em;
+}
+
+.suggestions {
+  background: white;
+  position: absolute;
+  width: 100%;
+  top: 40px;
+  text-align: left;
+  list-style: none;
+}
+
+.suggestions li {
+  padding: .5em 1em;
+  border-bottom: 1px solid gray;
+  margin: 0;
+}
+
+.suggestions {
+  border-radius: 5px;
+}
+
+.suggestions li:first-of-type {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.suggestions li:last-of-type {
+  border: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.suggestions li:hover {
+  background: navy;
+  color: white;
+}
+
+.map {
+  width: 80%;
+  height: 350px;
 }
 
 /*LOGGED IN USER*/

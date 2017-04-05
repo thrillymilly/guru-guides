@@ -17,6 +17,14 @@ Rails.application.routes.draw do
     namespace :locations do
       get '/countries/:id', to: 'countries#show'
       get '/search', to: 'locations#show'
+      get '/suggestions', to: 'locations#suggest'
+    end
+  end
+
+  namespace :api do
+    #events api
+    namespace :events do
+      get '/events/:id', to: 'events#show'
     end
   end
 
