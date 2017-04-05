@@ -1,16 +1,40 @@
+<container>
+  <div class="header">
+    <div class="greeting">Hey there <%= current_user.full_name %> </div>
+  </div>
 
-<header>
-  <div class="greeting">Hey there <%= current_user.full_name %> </div>
-</header>
+  <div class="history">
+    <h3>History</h3>
+
+    <% current_user.plans.each do |plan| %>
+      <%= plan.address %>
+      <%= plan.arrival_date %>
+      <%= plan.departure_date %>
+
+    <% end %>
+
+  </div>
+
+  <div class="diary">
+    <h3>Diary</h3>
+    <section class="diary-entries">
+      <% current_user.comments.each do |comment| %>
+      <div class="entry">
+        <p>
+          <%= comment.body %>
+        </p>
+      <% end %>
+      </div>
+    </section>
+
+    <section class="new-entry">
+      <form action="/users/<%= current_user.id %>" method="post">
+        <input name="post" placeholder="Record your journey">
+      <button></button>
+      </form>
+    </section>
 
 
-<div class="history">
-  <h3>History</h3>
-</div>
+  </div>
 
-<div class="diary">
-  <h3><label>Diary</label></h3>
-
-    <input type="text" name="diary-box" class="diary-box">
-    <button class=>post</button>
-</div>
+</container>

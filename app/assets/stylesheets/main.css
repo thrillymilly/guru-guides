@@ -1,5 +1,5 @@
 * {
-  /*font-family: 'Work Sans', sans-serif;*/
+  font-family: 'Work Sans', sans-serif;
 }
 
 html {
@@ -11,28 +11,27 @@ body {
   height: 100%;
 }
 
+/*STYLING FOR NAV*/
+
 .top-nav {
   width: 100%;
   height: 80px;
   list-style-type: none;
   background-color: #ffffff;
   display: block;
+  border-bottom: 3px solid #666;
+
 }
 
-.logo {
-  width: 20%;
-  height: 100%;
-  margin: 0 auto;
+.nav-button {
   display: block;
 }
 
-.logout-btn {
-  justify-content: right;
+.nav-main-right {
+  display: flex;
 }
 
-.column > .logo{
-  width: 20%;
-}
+/*LANDING PAGE*/
 
 .column.one-half.left {
   float: left;
@@ -50,12 +49,13 @@ body {
   background-color: #ffffff;
   position: relative;
   text-align: center;
+  border: 3px solid #666;
 }
 
 
-/*STYLING FOR USER PAGE*/
+/*USER ACCT. PAGE*/
 
-header,
+.header,
 .history,
 .diary,
 {
@@ -80,14 +80,16 @@ header,
 .diary {
   background-color: #a5c688;
   float: right;
-  width: 50%;
+  width: 50%;ß
   height: 1000px;
   text-align: center;
-  display: inline-block;
+  display: flex;
 }
 
-.diary-box {
-  width: 33%;
+.diary-entries {
+    height: 200px;
+    overflow: scroll;
+    padding: 0 40px;
 }
 
 .planner {
@@ -127,4 +129,19 @@ header,
 
 .items {
   display: none;
+}
+
+/*LOGGED IN USER*/
+
+.start-guiding {
+ text-align: center;
+ background-color: #ffffff;
+ font-size: 2em;
+ width: 300px;
+ height: 100px;
+ position: absolute;
+ left: 50%;
+ top: 50%;
+ margin-left: -150px;
+ margin-top: -50px;
 }

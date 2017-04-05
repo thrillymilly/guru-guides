@@ -12,6 +12,7 @@ Eat.destroy_all
 Plan.destroy_all
 SavedEvent.destroy_all
 SavedEat.destroy_all
+Comment.destroy_all
 
 user = User.new(
          email: "test@gg.com",

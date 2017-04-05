@@ -12,29 +12,25 @@
 
   <!--HEADER STARTS HERE  -->
   <div class="top-nav">
-    <div class="header-main-right">
-      <div class="logo u-pull-left"><a href="/"><img src="http://www.fillmurray.com/100/100"></a>
-      </div>
-      <div class="header-main-right-nav u-pull-right">
-        <%if logged_in? %>
+    <div class="nav-main-right u-pull-right">
+      <%if logged_in? %>
 
-            <div class="hello-user">Hey there <%= current_user.full_name %></div>
-
-            <%= form_tag '/session', method: 'delete' do %>
-              <button class="logout-btn u-pull-right">logout</button>
-            <% end %>
-          <% else %>
-
-          <%= form_tag '/session', method: 'post' do %>
-            <label for="">email</label>
-            <input type="text" name="email">
-            <label for="">password</label>
-            <input type="password" name="password">
-            <button>login</button>
+          <%= form_tag '/session', method: 'delete' do %>
+            <button class="nav-button u-pull-right">logout</button>
           <% end %>
 
+          <a class="button nav-button account-btn" href=<%="/users/#{current_user.id}"%>>Account</a>
+        <% else %>
+
+        <%= form_tag '/session', method: 'post' do %>
+          <label for="">email</label>
+          <input type="text" name="email">
+          <label for="">password</label>
+          <input type="password" name="password">
+          <button>login</button>
         <% end %>
-      </div>
+
+      <% end %>
     </div>
   </div>
 
