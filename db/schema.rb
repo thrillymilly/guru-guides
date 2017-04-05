@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 20170404054828) do
   enable_extension "plpgsql"
 
   create_table "eats", force: :cascade do |t|
-    t.float    "longitude"
-    t.float    "latitude"
-    t.string   "title"
+    t.float    "longitude",  null: false
+    t.float    "latitude",   null: false
+    t.string   "title",      null: false
     t.string   "image"
     t.text     "info"
     t.datetime "created_at", null: false
@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(version: 20170404054828) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.float    "longitude"
-    t.float    "latitude"
-    t.string   "title"
-    t.date     "date"
+    t.float    "longitude",  null: false
+    t.float    "latitude",   null: false
+    t.string   "title",      null: false
+    t.date     "date",       null: false
     t.string   "image"
     t.text     "info"
     t.datetime "created_at", null: false
@@ -38,10 +38,12 @@ ActiveRecord::Schema.define(version: 20170404054828) do
 
   create_table "plans", force: :cascade do |t|
     t.integer  "user_id"
-    t.float    "longitude"
-    t.float    "latitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.float    "longitude",      null: false
+    t.float    "latitude",       null: false
+    t.date     "arrival_date",   null: false
+    t.date     "departure_date", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["user_id"], name: "index_plans_on_user_id", using: :btree
   end
 

@@ -34,8 +34,8 @@ Eat.create(latitude: -38.522112, longitude: 145.314076, title: 'The Cape Kitchen
 
 Eat.create(latitude: -38.464027, longitude: 145.309135, title: 'The Foreshore Bar & Restaurant', image: 'https://www.visitphillipisland.com/wp-content/uploads/2012/11/Foreshore.jpg', info: 'Our menu’s comprise of local produce, fresh seafood and dishes and influences from around the world. Lunch time we offer light snacks as well as main meals, in the evening we have a full a la carte menu to include starter, mains & desserts')
 
-Plan.create(longitude: -38.489870, latitude: 145.203828, user_id: User.first.id)
-Plan.create(longitude: -37.210561, latitude: 142.397249, user_id: User.first.id)
+Plan.create(longitude: -38.489870, latitude: 145.203828, arrival_date: Date.new(2017, 5, 5), departure_date: Date.new(2017, 6, 6), user_id: User.first.id)
+Plan.create(longitude: -37.210561, latitude: 142.397249, arrival_date: Date.new(2017, 8, 8), departure_date: Date.new(2017, 9, 9), user_id: User.first.id)
 
 SavedEvent.create(event_id: Event.first.id, plan_id: Plan.first.id)
 SavedEvent.create(event_id: Event.second.id, plan_id: Plan.second.id)
