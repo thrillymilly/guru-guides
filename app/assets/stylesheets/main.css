@@ -128,3 +128,8 @@ header,
 .items {
   display: none;
 }
+
+.map {
+  width: 80%;
+  height: 350px;
+}
