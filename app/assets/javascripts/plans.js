@@ -35,6 +35,14 @@ $(function() {
     // update the map
   });
 
+  $('.search-form').submit(function(e) {
+    e.preventDefault();
+
+    var formData = new FormData($(this)[0]);
+
+    $.ajax({}).done(function() {});
+  });
+
   $('.plan').on('click', 'header', function() {
     $(this).closest('div').find('.items').slideToggle(300);
   });

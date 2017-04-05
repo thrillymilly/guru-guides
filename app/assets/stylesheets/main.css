@@ -138,19 +138,23 @@ body {
   text-align: center;
 }
 
-.search-wrapper {
+.search-form {
   display: inline-block;
   position: relative;
 }
 
-.search {
+.search, .suggestions {
   width: 30em;
 }
 
 .suggestions {
+  font-size: 1.1rem;
+}
+
+.suggestions {
   background: white;
+  border-radius: 5px;
   position: absolute;
-  width: 100%;
   top: 40px;
   text-align: left;
   list-style: none;
@@ -161,10 +165,6 @@ body {
   padding: .5em 1em;
   border-bottom: 1px solid gray;
   margin: 0;
-}
-
-.suggestions {
-  border-radius: 5px;
 }
 
 .suggestions li:first-of-type {
