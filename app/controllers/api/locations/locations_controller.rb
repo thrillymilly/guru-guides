@@ -1,4 +1,4 @@
-class Api::Locations::LocationsController < Api::ApiController
+class Api::Locations::LocationsController < ApplicationController
   def show
     latitude, longitude = params[:lat], params[:lon]
 
