@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 # gem for getting list of states and countries
 gem 'city-state'
+# gem for consuming RESTful web services
+gem 'httparty'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,9 +1,14 @@
 * {
-  font-family: 'Work Sans', sans-serif;
+  /*font-family: 'Work Sans', sans-serif;*/
+}
+
+html {
+  height: 100%;
 }
 
 body {
   background-color: #C19D8C;
+  height: 100%;
 }
 
 nav {
@@ -21,9 +26,48 @@ nav {
 }
 
 .home-left {
-  
+
 }
 
 .home-right {
 
+}
+
+.planner {
+  height: 80%;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.plans, .events-eats {
+  border: 3px solid #666;
+  border-radius: 5px;
+  background: #e3e9ec;
+  height: 80%;
+}
+
+.plans > header {
+  height: 3em;
+  background: #c0cfd6;
+  border-bottom: 2px solid #666;
+  line-height: 3em;
+  text-align: center;
+}
+
+.planner .contents {
+  height: calc(100% - 3em);
+  overflow: auto;
+}
+
+.plan {
+  border-bottom: 1px solid black;
+  padding: .5em;
+}
+
+.events {
+  background: lightblue;
+}
+
+.items {
+  display: none;
 }

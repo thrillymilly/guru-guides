@@ -1,17 +1,23 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  ##ROUTES FOR LOGIN##
+  # routes for sessions
   post '/session', to: 'session#create'
   delete '/session', to: 'session#destroy'
 
-  ##ROUTES FOR NEW USER##
+  # routes for users
   resources :users, except: :new
+
+  # routes for plans
+  get '/plans', to: 'plans#index'
 
   # api routes
   namespace :api do
-    # state/country api
-    get '/countries/:id', to: 'countries#show'
+    # locations api
+    namespace :locations do
+      get '/countries/:id', to: 'countries#show'
+      get '/search', to: 'locations#show'
+    end
   end
 
   root 'pages#index'
