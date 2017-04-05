@@ -1,3 +1,7 @@
+<% if flash[:error].present? %>
+<div><%= flash[:error] %></div>
+<% end %>
+
 <%if !logged_in? %>
 
     <div class="container">

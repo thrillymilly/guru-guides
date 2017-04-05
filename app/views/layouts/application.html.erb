@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>GuruGuides</title>
-      <%= csrf_meta_tags %>
-      <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
-      <link style="assets/stylesheets/main.css" >
-      <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    </head>
+  <head>
+    <title>GuruGuides</title>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
   <body>
 
   <!--HEADER STARTS HERE  -->
@@ -33,7 +32,7 @@
             <input type="password" name="password">
             <button>login</button>
           <% end %>
-          
+
         <% end %>
       </div>
     </div>
