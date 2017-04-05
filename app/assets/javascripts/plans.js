@@ -11,7 +11,7 @@ $(function() {
     } else if (input.length > 4) {
       $.ajax({
         url: '/api/locations/suggestions',
-        data: { input: $(this).val() }
+        data: { input: input }
       }).done(function(results) {
         $suggestions.empty();
 
@@ -23,11 +23,24 @@ $(function() {
   });
 
   $suggestions.on('click', 'li', function() {
-    var location = $(this).text();
+    $search.val($(this).text());
+    $selectedLocation.val($(this).attr('data-id')).change();
+  });
 
-    $search.val(location);
-    $selectedLocation.val(location);
+  $('*').click(function() {
     $suggestions.empty();
+  });
+
+  $selectedLocation.change(function() {
+    // update the map
+  });
+
+  $('.search-form').submit(function(e) {
+    e.preventDefault();
+
+    var formData = new FormData($(this)[0]);
+
+    $.ajax({}).done(function() {});
   });
 
   $('.plan').on('click', 'header', function() {

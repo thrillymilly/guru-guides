@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       get '/search', to: 'locations#show'
       get '/suggestions', to: 'locations#suggest'
     end
+
+    get '/plans', to: 'plans#index'
   end
 
   namespace :api do

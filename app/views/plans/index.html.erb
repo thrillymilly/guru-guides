@@ -1,9 +1,14 @@
 <div class="search-area">
-  <div class="search-wrapper">
-    <input type="hidden" id="selected-location">
-    <input type="text" class="search" placeholder="Search for a location">
+  <form class="search-form">
+    <input type="hidden" id="selected-location" name="place_id">
     <ul class="suggestions"></ul>
-  </div>
+    <input type="text" class="search" name="place_name" placeholder="Search for a location" required>
+    <label for="">Arrival date</label>
+    <input type="date" name="arrival_date" value="<%= Date.current %>" required>
+    <label for="">Departure date</label>
+    <input type="date" name="departure_date" value="<%= Date.tomorrow %>" required>
+    <button class="button-primary">Add to planner</button>
+  </form>
 </div>
 
 <div class="u-cf planner">
