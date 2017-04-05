@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>GuruGuides</title>
-    <%= csrf_meta_tags %>
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
-    <link style="assets/stylesheets/main.css" >
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
+    <head>
+      <title>GuruGuides</title>
+      <%= csrf_meta_tags %>
+      <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+      <link style="assets/stylesheets/main.css" >
+      <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
   <body>
 
-  <nav>
-    <img class="logo" src="http://www.fillmurray.com/200/300" alt="GURU GUIDES LOGO">
-  </nav>
+  <!--HEADER STARTS HERE  -->
+  <div class="top-nav">
+    <div class="header-main-right">
+      <div class="logo u-pull-left"><a href="/"><img src="http://www.fillmurray.com/100/100"></a>
+      </div>
+      <div class="header-main-right-nav u-pull-right">
+        <%if logged_in? %>
 
+            <div class="hello-user">Hey there <%= current_user.full_name %></div>
 
-    <%= yield %>
+            <%= form_tag '/session', method: 'delete' do %>
+              <button class="logout-btn u-pull-right">logout</button>
+            <% end %>
+          <% else %>
+
+          <%= form_tag '/session', method: 'post' do %>
+            <label for="">email</label>
+            <input type="text" name="email">
+            <label for="">password</label>
+            <input type="password" name="password">
+            <button>login</button>
+          <% end %>
+          
+        <% end %>
+      </div>
+    </div>
   </div>
+
+  <!-- HEADER ENDS HERE -->
+
+  <%= yield %>
 
   </body>
 </html>

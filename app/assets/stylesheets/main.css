@@ -6,24 +6,81 @@ body {
   background-color: #C19D8C;
 }
 
-nav {
+.top-nav {
   width: 100%;
-  height: 30%;
+  height: 80px;
   list-style-type: none;
   background-color: #ffffff;
+  display: block;
 }
 
 .logo {
-  width: 50px;
+  width: 20%;
+  height: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.logout-btn {
+  justify-content: right;
+}
+
+.column > .logo{
+  width: 20%;
+}
+
+.column.one-half.left {
   float: left;
+  margin: 10% 0 20% 0;
+
+}
+
+.column.one-half.right {
+  float: right;
+  margin: 10% 0 20% 0;
+}
+
+.hero-signup {
+  border-radius: 25px;
+  background-color: #ffffff;
   position: relative;
-  margin: 10px 20px 20px 20px;
+  text-align: center;
 }
 
-.home-left {
-  
+
+/*STYLING FOR USER PAGE*/
+
+header,
+.history,
+.diary,
+{
+  margin: 0 1.5% 24px 1.5%;
 }
 
-.home-right {
+.greeting {
+  background-color: #75bbb8;
+  text-align: center;
+  font-size: 3em;
+}
 
+.history {
+  background-color: #6e9dc9;
+  float: left;
+  width: 50%;
+  height: 1000px;
+  text-align: center;
+
+}
+
+.diary {
+  background-color: #a5c688;
+  float: right;
+  width: 50%;
+  height: 1000px;
+  text-align: center;
+  display: inline-block;
+}
+
+.diary-box {
+  width: 33%;
 }

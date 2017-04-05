@@ -1,57 +1,41 @@
 <%if !logged_in? %>
-<nav>
-  <%= form_tag '/session', method: 'post' do %>
-  <label for="">email</label>
-  <input type="text" name="email">
-  <label for="">password</label>
-  <input type="password" name="password">
-  <label></label>
-  <button>login</button>
-  <% end %>
-</nav>
 
-<div class="column one-half left">
-  <img src="http://www.fillmurray.com/200/300">
-</div>
+    <div class="container">
 
-<div class="column one-half right">
-  <h1 class ='hero-text'>GURU GUIDES SIGN UP</h1>
-  <div class="hero-signup">
-    <h2>Sign up here</h2>
-    <%= form_tag '/users', method: 'post' do %>
+      <div class="column one-half left">
+        <h2><i class="em em-wave"></h2></i><h1 class="hero-text">Hi, welcome to Guru Guides</h1>
+      </div>
 
-    <input type="email" name="email" value="" placeholder="Email" class= "input-signup">
-    <input type="password" name="password" value="" placeholder="Create a password" class= "input-signup">
-    <input type="text" name="full_name" value="" placeholder="Full Name" class= "input-signup">
-    <input type="text" name="address_1" value="" placeholder="Address Line 1" class= "input-signup">
-    <input type="text" name="address_2" value="" placeholder="Address Line 2" class= "input-signup">
-    <input type="text" name="city" value="" placeholder="City" class= "input-signup">
+      <div class="column one-half right">
+        <div class="hero-signup">
+          <h2>Sign up here</h2>
+          <%= form_tag '/users', method: 'post' do %>
 
-    <select id="states" name="state_code" class="input-signup"></select>
+            <input type="email" name="email" value="" placeholder="Email" class= "input-signup">
+            <input type="password" name="password" value="" placeholder="Create a password" class= "input-signup">
+            <input type="text" name="full_name" value="" placeholder="Full Name" class= "input-signup">
+            <input type="text" name="address_1" value="" placeholder="Address Line 1" class= "input-signup">
+            <input type="text" name="address_2" value="" placeholder="Address Line 2" class= "input-signup">
+            <input type="text" name="city" value="" placeholder="City" class= "input-signup">
 
-    <select id="countries" name="country_code" class="input-signup">
-      <% @countries.sort_by(&:last).each do |code, name| %>
-      <option value="<%= code %>" <%= "selected" if code == :AU %>><%= name %></option>
-      <% end %>
-    </select>
+            <select id="states" name="state_code" class="input-signup"></select>
 
-    <input type="text" name="zip_code" value="" placeholder="Postcode/Zip" class= "input-signup">
-    <button class="btn btn-primary btn-lg round">Sign Up</button>
-    <% end %>
+            <select id="countries" name="country_code" class="input-signup">
+              <% @countries.sort_by(&:last).each do |code, name| %>
+              <option value="<%= code %>" <%= "selected" if code == :AU %>><%= name %></option>
+              <% end %>
+            </select>
+
+            <input type="text" name="zip_code" value="" placeholder="Postcode/Zip" class= "input-signup">
+            <button class="btn btn-primary btn-lg round">Sign Up</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+
+  <div class="column one-half">
   </div>
-</div>
-<% else %>
 
-<div class="column one-half">
-  <div>
-    Hey there <%= current_user.full_name %>
-  </div>
-<div class="login-btn"><a href="/login">Login</a></div>
-
-Start guiding
-
-  <%= form_tag '/session', method: 'delete' do %>
-    <button>logout</button>
-  <% end %>
-
+  <button class="start-guiding">Start guiding</button>
 <% end %>
