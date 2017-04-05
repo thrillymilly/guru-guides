@@ -182,3 +182,8 @@ header,
   background: navy;
   color: white;
 }
+
+.map {
+  width: 80%;
+  height: 350px;
+}

@@ -21,5 +21,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    #events api
+    namespace :events do
+      get '/events/:id', to: 'events#show'
+    end
+  end
+
   root 'pages#index'
 end
