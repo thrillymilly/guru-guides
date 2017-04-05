@@ -11,7 +11,7 @@ $(function() {
     } else if (input.length > 4) {
       $.ajax({
         url: '/api/locations/suggestions',
-        data: { input: $(this).val() }
+        data: { input: input }
       }).done(function(results) {
         $suggestions.empty();
 
@@ -23,11 +23,8 @@ $(function() {
   });
 
   $suggestions.on('click', 'li', function() {
-    var location = $(this).text();
-    var placeId = $(this).attr('data-id');
-
-    $search.val(location);
-    $selectedLocation.val(placeId).change();
+    $search.val($(this).text());
+    $selectedLocation.val($(this).attr('data-id')).change();
   });
 
   $('*').click(function() {
