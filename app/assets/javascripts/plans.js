@@ -1,7 +1,42 @@
+var padLeft = function(str, paddedLength, prefixChar) {
+  if (str.length < paddedLength) {
+    str = prefixChar.repeat(paddedLength - str.length) + str;
+  }
+
+  return str;
+};
+
+var setDates = function() {
+  var date = new Date();
+  var year = date.getFullYear().toString();
+  var month = (date.getMonth() + 1).toString();
+  var date = date.getDate().toString();
+  var dateString = year + '-' + padLeft(month, 2, '0') + '-' + padLeft(date, 2, '0');
+
+  $('[name=arrival_date], [name=departure_date]').val(dateString).attr('min', dateString);
+};
+
+var renderPlans = function(planTemplate) {
+  $.ajax({
+    url: '/api/plans'
+  }).done(function(plans) {
+    var $contents = $('.plans .contents')
+
+    plans.forEach(function(plan) {
+      $contents.append(planTemplate(plan));
+    });
+  });
+};
+
 $(function() {
+  var planTemplate = Handlebars.compile($('#plan-template').html());
+
   var $suggestions = $('.suggestions');
   var $search = $('.search');
   var $selectedLocation = $('#selected-location');
+
+  setDates();
+  renderPlans(planTemplate);
 
   $('.search').keyup(function() {
     var input = $(this).val();
