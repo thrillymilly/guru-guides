@@ -1,4 +1,10 @@
-console.log('JS WORKING');
+var comments = [new Comment({
+  body: '',
+})];
 
-var diaryBox = document.getElementById("diary");
-diaryBox.scrollTop = diaryBox.scrollHeight;
+comments.forEach(function(comment) {
+
+  // console.log(quote);
+  var view = new CommentItemView({ model: comment });
+  $('.diary').append(view.render().el);
+});

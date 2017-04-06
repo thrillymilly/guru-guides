@@ -18,22 +18,38 @@ body {
   height: 80px;
   list-style-type: none;
   background-color: #ffffff;
-  display: block;
   border-bottom: 3px solid #666;
-
+  display: flex;
+  flex-direction: row;
 }
 
-.nav-button {
-  width: 100%;
-  padding: 0 1em;
+.nav-main-left {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 
 .nav-main-right {
+  width: 50%;
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.logo {
+  height: 80%;
 }
 
 /*LANDING PAGE*/
+
+.landing-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
 
 .column.one-half.left {
   float: left;
@@ -52,47 +68,74 @@ body {
   position: relative;
   text-align: center;
   border: 3px solid #666;
+  width: 80%;
+}
+
+.hero-text {
+  position: relative;
+  text-align: center;
+  width: 80%;
 }
 
 
 /*USER ACCT. PAGE*/
-
-.header,
-.history,
-.diary,
-{
-  margin: 0 1.5% 24px 1.5%;
+.account-container{
+  display: flex;
+  flex-flow: row wrap;
 }
 
-.greeting {
+.header, .history, .diary, {
+  flex: 1 100%;
+}
+
+@media all and (min-width: 800px) {
+
+  .history { order: 1; }
+  .diary   { order: 2; }
+
+}
+
+.header {
   background-color: #75bbb8;
   text-align: center;
   font-size: 3em;
+  width: 100%;
 }
 
 .history {
   background-color: #6e9dc9;
-  float: left;
   width: 50%;
   height: 1000px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
 
+.history-card {
+  width: 80%;
+  background-color: #75bbb8;
 }
 
 .diary {
   background-color: #a5c688;
-  float: right;
-  width: 50%;ß
+  width: 50%;
   height: 1000px;
   text-align: center;
-  display: flex;
 }
 
 .diary-entries {
-    height: 200px;
-    overflow: scroll;
-    padding: 0 40px;
+
 }
+
+.new-entry {
+
+}
+
+.plan-card {
+
+}
+
+/*JOURNEY PLANNER PAGE*/
 
 .planner {
   height: 80%;

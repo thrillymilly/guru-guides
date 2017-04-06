@@ -12,11 +12,14 @@
 
   <!--HEADER STARTS HERE  -->
   <div class="top-nav">
-    <div class="nav-main-right u-pull-right">
+    <div class="nav-main-left">
+      <a href="/"><h2>Guru Guides</h2></a>
+    </div>
+    <div class="nav-main-right">
       <%if logged_in? %>
 
           <%= form_tag '/session', method: 'delete' do %>
-            <button class="nav-button u-pull-right">logout</button>
+            <button class="nav-button">logout</button>
           <% end %>
           <a class="button nav-button account-btn" href=<%="/users/#{current_user.id}"%>>Account</a>
 

@@ -20,6 +20,9 @@ Rails.application.routes.draw do
       get '/suggestions', to: 'locations#suggest'
     end
 
+    post '/comments', to: 'comments#create'
+    get '/comments', to: 'comments#show'
+
     get '/plans', to: 'plans#index'
   end
 
@@ -32,3 +35,5 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 end
+
+  #routes for comments
