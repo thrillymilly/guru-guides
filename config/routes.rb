@@ -25,13 +25,10 @@ Rails.application.routes.draw do
 
     get '/plans', to: 'plans#index'
     post '/plans', to: 'plans#create'
-  end
 
-  namespace :api do
-    #events api
-    namespace :events do
-      get '/events/:id', to: 'events#show'
-    end
+    get '/events', to: 'events#index'
+
+    get '/eats', to: 'eats#index'
   end
 
   root 'pages#index'

@@ -199,6 +199,16 @@ body {
   background: #f0f0f0;
 }
 
+.events-eats {
+  height: 500px;
+  overflow: auto;
+}
+
+.event, .eat {
+  background: #f0f0f0;
+  border-bottom: 1px solid black;
+}
+
 .search-area {
   text-align: center;
 }

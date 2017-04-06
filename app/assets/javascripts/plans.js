@@ -26,17 +26,43 @@ var renderPlans = function($view, planTemplate) {
   });
 };
 
+var renderEvents = function($view, eventTemplate) {
+  $.ajax({
+    url: '/api/events'
+  }).done(function(events) {
+    events.forEach(function(ev) {
+      $view.append(eventTemplate(ev));
+    });
+  });
+};
+
+var renderEats = function($view, eatTemplate) {
+  $.ajax({
+    url: '/api/eats'
+  }).done(function(eats) {
+    eats.forEach(function(eat) {
+      $view.append(eatTemplate(eat));
+    });
+  });
+};
+
 $(function() {
   var planTemplate = Handlebars.compile($('#plan-template').html());
+  var eventTemplate = Handlebars.compile($('#event-template').html());
+  var eatTemplate = Handlebars.compile($('#eat-template').html());
 
   var $suggestions = $('.suggestions');
   var $search = $('.search');
   var $addToPlanButton = $('.search-form button');
   var $selectedLocation = $('#selected-location');
   var $plansContents = $('.plans .contents');
+  var $events = $('.events-eats .events');
+  var $eats = $('.events-eats .eats');
 
   setDates();
   renderPlans($plansContents, planTemplate);
+  renderEvents($events, eventTemplate);
+  renderEats($eats, eatTemplate);
 
   $search.keyup(function() {
     $selectedLocation.val("");
