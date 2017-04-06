@@ -14,7 +14,7 @@ class Api::PlansController < ApplicationController
     plan.user = current_user
 
     if plan.save
-      render json: plan.as_json.merge({ status: "OK" })
+      render json: plan
     else
       render json: plan.errors
     end
