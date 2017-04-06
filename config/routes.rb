@@ -20,18 +20,20 @@ Rails.application.routes.draw do
       get '/suggestions', to: 'locations#suggest'
     end
 
+    # routes for comments
     post '/comments', to: 'comments#create'
     get '/comments', to: 'comments#show'
 
+    # routes for plans
     get '/plans', to: 'plans#index'
     post '/plans', to: 'plans#create'
 
+    # routes for events
     get '/events', to: 'events#index'
 
+    # routes for eats
     get '/eats', to: 'eats#index'
   end
 
   root 'pages#index'
 end
-
-  #routes for comments
