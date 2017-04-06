@@ -16,14 +16,12 @@ var setDates = function() {
   $('[name=arrival_date], [name=departure_date]').val(dateString).attr('min', dateString);
 };
 
-var renderPlans = function(planTemplate) {
+var renderPlans = function($view, planTemplate) {
   $.ajax({
     url: '/api/plans'
   }).done(function(plans) {
-    var $contents = $('.plans .contents')
-
     plans.forEach(function(plan) {
-      $contents.append(planTemplate(plan));
+      $view.append(planTemplate(plan));
     });
   });
 };
@@ -33,12 +31,17 @@ $(function() {
 
   var $suggestions = $('.suggestions');
   var $search = $('.search');
+  var $addToPlanButton = $('.search-form button');
   var $selectedLocation = $('#selected-location');
+  var $plansContents = $('.plans .contents');
 
   setDates();
-  renderPlans(planTemplate);
+  renderPlans($plansContents, planTemplate);
 
-  $('.search').keyup(function() {
+  $search.keyup(function() {
+    $selectedLocation.val("");
+    $addToPlanButton.prop('disabled', true);
+
     var input = $(this).val();
 
     if (input.length === 0) {
@@ -50,9 +53,11 @@ $(function() {
       }).done(function(results) {
         $suggestions.empty();
 
-        results.forEach(function(result) {
-          $suggestions.append($('<li>').text(result.description).attr('data-id', result.place_id));
-        });
+        if (results) {
+          results.forEach(function(result) {
+            $suggestions.append($('<li>').text(result.description).attr('data-id', result.place_id));
+          });
+        }
       });
     }
   });
@@ -61,6 +66,7 @@ $(function() {
     $search.val($(this).text());
     $selectedLocation.val($(this).attr('data-id'));
     $selectedLocation[0].dispatchEvent(new Event('change'));
+    $addToPlanButton.prop('disabled', false);
   });
 
   $('*').click(function() {
@@ -72,10 +78,25 @@ $(function() {
 
     var formData = new FormData($(this)[0]);
 
-    $.ajax({}).done(function() {});
+    $.ajax({
+      url: '/api/plans',
+      method: 'post',
+      data: {
+        place_id: formData.get('place_id'),
+        place_name: formData.get('place_name'),
+        arrival_date: formData.get('arrival_date'),
+        departure_date: formData.get('departure_date')
+      }
+    }).done(function(result) {
+      if (result.status === "OK") {
+        $plansContents.append(planTemplate(result));
+      } else {
+        console.log(result);
+      }
+    });
   });
 
-  $('.contents').on('click', '.plan header', function() {
+  $plansContents.on('click', '.plan header', function() {
     $(this).closest('div').find('.items').slideToggle(300);
   });
 });
