@@ -1,37 +1,40 @@
+<%= javascript_include_tag params[:controller] %>
+
 <div class="account-container">
   <div class="header">
     <div class="greeting">Hey there <%= current_user.full_name %> </div>
   </div>
 
-  <div class="history">
-    <h3>History</h3>
-      <div class="history-card">
-        <% current_user.plans.each do |plan| %>
-          <div class="plan-card">
-            Address: <%= plan.address %><br>
-            Date of arrival: <%= plan.arrival_date %><br>
-            Date of departure: <%= plan.departure_date %><br>
-          </div>
-        <% end %>
-      </div>
-  </div>
-
-
-    <div class="diary">
-
-    <form action="/show/<%= @current_user.id %>" method="post">
-      <h3>Diary</h3>
-
-      <p>{{ body }}</p>
-
-      <input type="text" value="{{ body }}">
-      <button ></button>
+    <div class="history">
+      <h3>History</h3>
+        <div class="history-card">
+          <% current_user.plans.each do |plan| %>
+            <div class="plan-card">
+              Address: <%= plan.address %><br>
+              Date of arrival: <%= plan.arrival_date %><br>
+              Date of departure: <%= plan.departure_date %><br>
+            </div>
+          <% end %>
+        </div>
     </div>
 
-
-
-
-
-
+    <div class="diary row">
+      <h3>Diary</h3>
+      <div class="diary-left">
+        <span class="diary-entries">
+          <% currentUserComments.each do |comment| %>
+            <%= comment.body %>
+          <% end %>
+        </span>
+      </div>
+      <div class="diary-right">
+        <form class="comment-form">
+          <textarea type="text" name="body" value=""></textarea>
+          <button>Log</button>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
 
 </container>

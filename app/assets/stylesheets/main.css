@@ -135,6 +135,16 @@ body {
 
 }
 
+.diary-left {
+  float: left;
+  width: 45%;
+}
+
+.diary-right {
+  float: right;
+  width: 45%;
+}
+
 /*JOURNEY PLANNER PAGE*/
 
 .planner {
