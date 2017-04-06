@@ -20,7 +20,14 @@
     <div class="contents"></div>
   </div>
   <div class="six columns map">Map goes here</div>
-  <div class="three columns events-eats">Search for a location to view what's happening around it</div>
+  <div class="three columns events-eats">
+    <div class="events">
+      <header>Events</header>
+    </div>
+    <div class="eats">
+      <header>Eats</header>
+    </div>
+  </div>
 </div>
 
 <script async defer
@@ -29,17 +36,17 @@
 
 <script id="plan-template" type="text/x-handlebars-template">
   <div class="plan" data-lat="{{latitude}}" data-lng="{{longitude}}">
-    <p>
-      {{address}}
+    <div class="details">
+      <p class="address">{{address}}</p>
       <div>Arrive: {{arrival_date}}</div>
       <div>Depart: {{departure_date}}</div>
-    </p>
+    </div>
     <div class="events">
       <header>Events</header>
       <div class="items">
         {{#each saved_events}}
-        <div>
-          <div>{{this.event.title}}</div>
+        <div data-lat="{{this.event.latitude}}" data-lng="{{this.event.longitude}}">
+          <div class="title">{{this.event.title}}</div>
           <div>{{this.event.info}}</div>
         </div>
         {{/each}}
@@ -49,8 +56,8 @@
       <header>Eats</header>
       <div class="items">
         {{#each saved_eats}}
-        <div>
-          <div>{{this.eat.title}}</div>
+        <div data-lat="{{this.eat.latitude}}" data-lng="{{this.eat.longitude}}">
+          <div class="title">{{this.eat.title}}</div>
         </div>
         {{/each}}
       </div>
