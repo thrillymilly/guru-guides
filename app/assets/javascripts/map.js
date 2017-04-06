@@ -47,6 +47,8 @@ var showMap = function() {
 
         // create other markers
         google.maps.event.addDomListener($('.events')[0], 'click', function() {
+          alert('hi')
+          
         });
       }
     });
