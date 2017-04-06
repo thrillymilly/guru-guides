@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :require_login
 
-  helper_method :current_user, :logged_in?, :log_out
+  helper_method :current_user, :logged_in?, :log_out, :get_place_details
 
   def current_user
     User.find_by(id: session[:user_id])
@@ -16,6 +16,16 @@ class ApplicationController < ActionController::Base
   def log_out
     reset_session
     redirect_to :root
+  end
+
+  def get_place_details(place_id)
+    response = HTTParty.get("https://maps.googleapis.com/maps/api/place/details/json?placeid=#{place_id}&key=#{Rails.application.secrets.gmap_key}")
+
+    if response["status"] == "OK"
+      [response["result"].assoc("formatted_address"), response["result"].assoc("geometry")].to_h
+    else
+      nil
+    end
   end
 
   private

@@ -1,18 +1,22 @@
 class Api::PlansController < ApplicationController
   def index
     if logged_in?
-      render json: current_user.plans.as_json(only: [:longitude, :latitude, :arrival_date, :departure_date],
-                                              include: { saved_eats: {
-                                                           include: { eat: {
-                                                             except: [:id, :created_at, :updated_at] } },
-                                                             only: [] },
-                                                         saved_events: {
-                                                           include: { event: {
-                                                             except: [:id, :created_at, :updated_at] } },
-                                                             only: [] } },
-                                              methods: :address)
+      render json: current_user.plans
     else
       render json: nil
+    end
+  end
+
+  def create
+    location = get_place_details(params[:place_id])["geometry"]["location"]
+
+    plan = Plan.new(latitude: location["lat"], longitude: location["lng"], arrival_date: params[:arrival_date], departure_date: params[:departure_date])
+    plan.user = current_user
+
+    if plan.save
+      render json: plan.as_json.merge({ status: "OK" })
+    else
+      render json: plan.errors
     end
   end
 end
