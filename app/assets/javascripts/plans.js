@@ -16,19 +16,24 @@ var setDates = function() {
   $('[name=arrival_date], [name=departure_date]').val(dateString).attr('min', dateString);
 };
 
-var renderPlans = function($view, planTemplate) {
+var renderPlans = function() {
+  var $view = $('.plans .contents');
+  var template = Handlebars.compile($('#plan-template').html());
+
   $.ajax({
     url: '/api/plans'
   }).done(function(plans) {
     $view.empty();
 
     plans.forEach(function(plan) {
-      $view.append(planTemplate(plan));
+      $view.append(template(plan));
     });
   });
 };
 
-var renderEvents = function($view, eventTemplate) {
+var renderEvents = function() {
+  var $view = $('.events .contents');
+  var template = Handlebars.compile($('#event-template').html());
   var $selectedPlan = $('.plan.selected');
 
   $.ajax({
@@ -38,7 +43,7 @@ var renderEvents = function($view, eventTemplate) {
     $view.empty();
 
     events["all_events"].forEach(function(ev) {
-      var $ev = $(eventTemplate(ev));
+      var $ev = $(template(ev));
 
       var isSavedEvent = !!events["saved_events"].find(function(saved_event) {
         return saved_event["event_id"] === ev["id"];
@@ -55,7 +60,9 @@ var renderEvents = function($view, eventTemplate) {
   });
 };
 
-var renderEats = function($view, eatTemplate) {
+var renderEats = function() {
+  var $view = $('.eats .contents');
+  var template = Handlebars.compile($('#eat-template').html());
   var $selectedPlan = $('.plan.selected');
 
   $.ajax({
@@ -65,7 +72,7 @@ var renderEats = function($view, eatTemplate) {
     $view.empty();
 
     eats["all_eats"].forEach(function(eat) {
-      var $eat = $(eatTemplate(eat));
+      var $eat = $(template(eat));
 
       var isSavedEat = !!eats["saved_eats"].find(function(saved_eat) {
         return saved_eat["eat_id"] === eat["id"];
@@ -83,20 +90,13 @@ var renderEats = function($view, eatTemplate) {
 };
 
 $(function() {
-  var planTemplate = Handlebars.compile($('#plan-template').html());
-  var eventTemplate = Handlebars.compile($('#event-template').html());
-  var eatTemplate = Handlebars.compile($('#eat-template').html());
-
   var $suggestions = $('.suggestions');
   var $search = $('.search');
   var $addToPlanButton = $('.search-form button');
   var $selectedLocation = $('#selected-location');
-  var $plansContents = $('.plans .contents');
-  var $eventsContents = $('.events .contents');
-  var $eatsContents = $('.eats .contents');
 
   setDates();
-  renderPlans($plansContents, planTemplate);
+  renderPlans();
 
   $search.keyup(function() {
     $selectedLocation.val("");
@@ -148,7 +148,10 @@ $(function() {
       }
     }).done(function(result) {
       if (result.id) {
-        renderPlans($plansContents, planTemplate);
+        renderPlans();
+        $('.events .contents').empty();
+        $('.eats .contents').empty();
+        $('.plans .contents').scrollTop(1E10);
       }
     });
   });
@@ -157,8 +160,8 @@ $(function() {
     $('.plan').removeClass('selected');
     $(this).addClass('selected');
 
-    renderEvents($eventsContents, eventTemplate);
-    renderEats($eatsContents, eatTemplate);
+    renderEvents();
+    renderEats();
   });
 
   $('.plans').on('click', '.plan header', function() {
@@ -175,8 +178,8 @@ $(function() {
       }
     }).done(function(result) {
       if (result.id) {
-        renderEvents($eventsContents, eventTemplate);
-        renderPlans($plansContents, planTemplate);
+        renderEvents();
+        renderPlans();
       }
     });
   });
@@ -191,8 +194,8 @@ $(function() {
       }
     }).done(function(result) {
       if (result.id) {
-        renderEats($eatsContents, eatTemplate);
-        renderPlans($plansContents, planTemplate);
+        renderEats();
+        renderPlans();
       }
     });
   });
