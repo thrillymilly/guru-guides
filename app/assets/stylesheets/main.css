@@ -159,6 +159,7 @@ body {
   border: 3px solid #666;
   border-radius: 5px;
   background: #e3e9ec;
+  max-height: 500px;
 }
 
 .plans > header, .events-eats > header {
@@ -170,7 +171,7 @@ body {
 }
 
 .contents {
-  height: calc(100% - 3em);
+  max-height: calc(500px - 4em);
   overflow: auto;
 }
 
@@ -201,7 +202,6 @@ body {
 }
 
 .items {
-  display: none;
   background: #f0f0f0;
 }
 
@@ -214,8 +214,11 @@ body {
 }
 
 .events-eats {
-  max-height: 500px;
   overflow: auto;
+}
+
+.status-added {
+  color: green;
 }
 
 .search-area {
@@ -292,4 +295,10 @@ body {
  top: 50%;
  margin-left: -150px;
  margin-top: -50px;
+}
+
+/*UTILITY CLASSES*/
+
+.hidden {
+  display: none
 }

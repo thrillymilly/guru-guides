@@ -37,7 +37,7 @@
 </script>
 
 <script id="plan-template" type="text/x-handlebars-template">
-  <div class="plan" data-lat="{{latitude}}" data-lng="{{longitude}}">
+  <div class="plan" data-id="{{id}}" data-lat="{{latitude}}" data-lng="{{longitude}}">
     <div class="details">
       <p class="address">{{address}}</p>
       <div>Arrive: {{arrival_date}}</div>
@@ -45,9 +45,9 @@
     </div>
     <div class="events">
       <header>Events</header>
-      <div class="items">
+      <div class="items hidden">
         {{#each saved_events}}
-        <div data-lat="{{this.event.latitude}}" data-lng="{{this.event.longitude}}">
+        <div data-id="{{this.event.id}}" data-lat="{{this.event.latitude}}" data-lng="{{this.event.longitude}}">
           <div class="title">{{this.event.title}}</div>
           <div>{{this.event.info}}</div>
         </div>
@@ -56,9 +56,9 @@
     </div>
     <div class="eats">
       <header>Eats</header>
-      <div class="items">
+      <div class="items hidden">
         {{#each saved_eats}}
-        <div data-lat="{{this.eat.latitude}}" data-lng="{{this.eat.longitude}}">
+        <div data-id="{{this.eat.id}}" data-lat="{{this.eat.latitude}}" data-lng="{{this.eat.longitude}}">
           <div class="title">{{this.eat.title}}</div>
         </div>
         {{/each}}
@@ -68,16 +68,20 @@
 </script>
 
 <script id="event-template" type="text/x-handlebars-template">
-  <div data-lat="{{latitude}}" data-lng="{{longitude}}">
+  <div class="event" data-id="{{id}}" data-lat="{{latitude}}" data-lng="{{longitude}}">
     <h6>{{title}}</h6>
     <div>{{date}}</div>
     <div>{{info}}</div>
+    <button class="button-primary add-btn hidden">Add to plan</button>
+    <div class="status-added hidden">&#10004; Added to plan</div>
   </div>
 </script>
 
 <script id="eat-template" type="text/x-handlebars-template">
-  <div data-lat="{{latitude}}" data-lng="{{longitude}}">
+  <div class="eat" data-id="{{id}}" data-lat="{{latitude}}" data-lng="{{longitude}}">
     <h6>{{title}}</h6>
     <div>{{info}}</div>
+    <button class="button-primary add-btn hidden">Add to plan</button>
+    <div class="status-added hidden">&#10004; Added to plan</div>
   </div>
 </script>

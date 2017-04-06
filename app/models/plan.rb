@@ -15,15 +15,12 @@ class Plan < ApplicationRecord
   end
 
   def as_json(options = nil)
-    super({ except: [:id, :created_at, :updated_at],
-            include: { saved_eats: {
-                         include: { eat: {
-                           except: [:id, :created_at, :updated_at] } },
-                           only: [] },
+    super({ include: { saved_eats: {
+                         include: :eat,
+                         only: [] },
                        saved_events: {
-                         include: { event: {
-                           except: [:id, :created_at, :updated_at] } },
-                           only: [] } },
+                         include: :event,
+                         only: [] } },
             methods: :address }.merge(options || {}))
   end
 end

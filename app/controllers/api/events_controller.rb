@@ -1,5 +1,11 @@
 class Api::EventsController < ApplicationController
   def index
-    render json: Event.all.as_json(except: [:created_at, :updated_at])
+    if params[:plan_id]
+      plan = Plan.find(params[:plan_id])
+
+      render json: { all_events: Event.all, saved_events: plan.saved_events }
+    else
+      render json: Event.all
+    end
   end
 end

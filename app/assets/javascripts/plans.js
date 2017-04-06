@@ -20,6 +20,8 @@ var renderPlans = function($view, planTemplate) {
   $.ajax({
     url: '/api/plans'
   }).done(function(plans) {
+    $view.empty();
+
     plans.forEach(function(plan) {
       $view.append(planTemplate(plan));
     });
@@ -27,21 +29,55 @@ var renderPlans = function($view, planTemplate) {
 };
 
 var renderEvents = function($view, eventTemplate) {
+  var $selectedPlan = $('.plan.selected');
+
   $.ajax({
-    url: '/api/events'
+    url: '/api/events',
+    data: { plan_id: $selectedPlan.attr('data-id') }
   }).done(function(events) {
-    events.forEach(function(ev) {
-      $view.append(eventTemplate(ev));
+    $view.empty();
+
+    events["all_events"].forEach(function(ev) {
+      var $ev = $(eventTemplate(ev));
+
+      var isSavedEvent = !!events["saved_events"].find(function(saved_event) {
+        return saved_event["event_id"] === ev["id"];
+      });
+
+      if (isSavedEvent) {
+        $ev.find('.status-added').show();
+      } else {
+        $ev.find('.add-btn').show();
+      }
+
+      $view.append($ev);
     });
   });
 };
 
 var renderEats = function($view, eatTemplate) {
+  var $selectedPlan = $('.plan.selected');
+
   $.ajax({
-    url: '/api/eats'
+    url: '/api/eats',
+    data: { plan_id: $selectedPlan.attr('data-id') }
   }).done(function(eats) {
-    eats.forEach(function(eat) {
-      $view.append(eatTemplate(eat));
+    $view.empty();
+
+    eats["all_eats"].forEach(function(eat) {
+      var $eat = $(eatTemplate(eat));
+
+      var isSavedEat = !!eats["saved_eats"].find(function(saved_eat) {
+        return saved_eat["eat_id"] === eat["id"];
+      });
+
+      if (isSavedEat) {
+        $eat.find('.status-added').show();
+      } else {
+        $eat.find('.add-btn').show();
+      }
+
+      $view.append($eat);
     });
   });
 };
@@ -107,15 +143,12 @@ $(function() {
       method: 'post',
       data: {
         place_id: formData.get('place_id'),
-        place_name: formData.get('place_name'),
         arrival_date: formData.get('arrival_date'),
         departure_date: formData.get('departure_date')
       }
     }).done(function(result) {
-      if (result.status === "OK") {
-        $plansContents.append(planTemplate(result));
-      } else {
-        console.log(result);
+      if (result.id) {
+        renderPlans($plansContents, planTemplate);
       }
     });
   });
@@ -130,5 +163,37 @@ $(function() {
 
   $('.plans').on('click', '.plan header', function() {
     $(this).siblings('.items').slideToggle(300);
+  });
+
+  $('.events-eats .events').on('click', '.add-btn', function() {
+    $.ajax({
+      url: '/api/saved_events',
+      method: 'post',
+      data: {
+        event_id: $(this).closest('.event').attr('data-id'),
+        plan_id: $('.plan.selected').attr('data-id')
+      }
+    }).done(function(result) {
+      if (result.id) {
+        renderEvents($eventsContents, eventTemplate);
+        renderPlans($plansContents, planTemplate);
+      }
+    });
+  });
+
+  $('.events-eats .eats').on('click', '.add-btn', function() {
+    $.ajax({
+      url: '/api/saved_eats',
+      method: 'post',
+      data: {
+        eat_id: $(this).closest('.eat').attr('data-id'),
+        plan_id: $('.plan.selected').attr('data-id')
+      }
+    }).done(function(result) {
+      if (result.id) {
+        renderEats($eatsContents, eatTemplate);
+        renderPlans($plansContents, planTemplate);
+      }
+    });
   });
 });

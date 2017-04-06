@@ -34,6 +34,12 @@ Rails.application.routes.draw do
 
     # routes for eats
     get '/eats', to: 'eats#index'
+
+    # routes for saved_events
+    post '/saved_events', to: 'saved_events#create'
+
+    # routes for saved_eats
+    post '/saved_eats', to: 'saved_eats#create'
   end
 
   root 'pages#index'
