@@ -21,11 +21,13 @@
   </div>
   <div class="six columns map">Map goes here</div>
   <div class="three columns events-eats">
+    <header>Events</header>
     <div class="events">
-      <header>Events</header>
+      <div class="contents"></div>
     </div>
+    <header>Eats</header>
     <div class="eats">
-      <header>Eats</header>
+      <div class="contents"></div>
     </div>
   </div>
 </div>
@@ -66,16 +68,16 @@
 </script>
 
 <script id="event-template" type="text/x-handlebars-template">
-  <div class="event" data-lat="{{latitude}}" data-lng="{{longitude}}">
-    <div>{{title}}</div>
+  <div data-lat="{{latitude}}" data-lng="{{longitude}}">
+    <h6>{{title}}</h6>
     <div>{{date}}</div>
     <div>{{info}}</div>
   </div>
 </script>
 
 <script id="eat-template" type="text/x-handlebars-template">
-  <div class="eat" data-lat="{{latitude}}" data-lng="{{longitude}}">
-    <div>{{title}}</div>
+  <div data-lat="{{latitude}}" data-lng="{{longitude}}">
+    <h6>{{title}}</h6>
     <div>{{info}}</div>
   </div>
 </script>

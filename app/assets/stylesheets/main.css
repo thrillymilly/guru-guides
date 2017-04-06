@@ -161,7 +161,7 @@ body {
   background: #e3e9ec;
 }
 
-.plans > header {
+.plans > header, .events-eats > header {
   height: 3em;
   background: #c0cfd6;
   border-bottom: 2px solid #666;
@@ -169,18 +169,22 @@ body {
   text-align: center;
 }
 
-.planner .contents {
+.contents {
   height: calc(100% - 3em);
   overflow: auto;
 }
 
-.plan {
+.contents > div {
   border-bottom: 1px solid black;
   padding: .5em;
 }
 
 .plan:hover {
   background: #a3a9ec;
+}
+
+.plan.selected {
+  background: #858dec;
 }
 
 .details {
@@ -201,14 +205,17 @@ body {
   background: #f0f0f0;
 }
 
-.events-eats {
-  height: 500px;
-  overflow: auto;
+.items > div {
+  border-bottom: 1px solid black;
 }
 
-.event, .eat {
-  background: #f0f0f0;
-  border-bottom: 1px solid black;
+.items > div:last-of-type {
+  border: 0;
+}
+
+.events-eats {
+  max-height: 500px;
+  overflow: auto;
 }
 
 .search-area {

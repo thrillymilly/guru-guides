@@ -56,13 +56,11 @@ $(function() {
   var $addToPlanButton = $('.search-form button');
   var $selectedLocation = $('#selected-location');
   var $plansContents = $('.plans .contents');
-  var $events = $('.events-eats .events');
-  var $eats = $('.events-eats .eats');
+  var $eventsContents = $('.events .contents');
+  var $eatsContents = $('.eats .contents');
 
   setDates();
   renderPlans($plansContents, planTemplate);
-  renderEvents($events, eventTemplate);
-  renderEats($eats, eatTemplate);
 
   $search.keyup(function() {
     $selectedLocation.val("");
@@ -122,7 +120,15 @@ $(function() {
     });
   });
 
-  $plansContents.on('click', '.plan header', function() {
-    $(this).closest('div').find('.items').slideToggle(300);
+  $('.plans').on('click', '.plan', function() {
+    $('.plan').removeClass('selected');
+    $(this).addClass('selected');
+
+    renderEvents($eventsContents, eventTemplate);
+    renderEats($eatsContents, eatTemplate);
+  });
+
+  $('.plans').on('click', '.plan header', function() {
+    $(this).siblings('.items').slideToggle(300);
   });
 });

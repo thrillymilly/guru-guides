@@ -15,7 +15,7 @@ class Plan < ApplicationRecord
   end
 
   def as_json(options = nil)
-    super({ only: [:longitude, :latitude, :arrival_date, :departure_date],
+    super({ except: [:id, :created_at, :updated_at],
             include: { saved_eats: {
                          include: { eat: {
                            except: [:id, :created_at, :updated_at] } },
