@@ -1,10 +1,6 @@
 class Api::Locations::LocationsController < ApplicationController
   def show
-    response = HTTParty.get("https://maps.googleapis.com/maps/api/place/details/json?placeid=#{params[:place_id]}&key=#{Rails.application.secrets.gmap_key}")
-
-    if response["status"] == "OK"
-      render json: [response["result"].assoc("formatted_address"), response["result"].assoc("geometry")].to_h
-    end
+    render json: get_place_details(params[:place_id])
   end
 
   def suggest
