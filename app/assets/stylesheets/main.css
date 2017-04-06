@@ -181,6 +181,10 @@ body {
   background: #a3a9ec;
 }
 
+.details {
+  margin-bottom: 1em;
+}
+
 .events, .eats {
   background: lightblue;
   margin-bottom: 1em;
