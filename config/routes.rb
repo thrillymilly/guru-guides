@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get '/comments', to: 'comments#show'
 
     get '/plans', to: 'plans#index'
+    post '/plans', to: 'plans#create'
   end
 
   namespace :api do

@@ -10,7 +10,7 @@
     <input type="date" name="arrival_date" required>
     <label for="">Departure date</label>
     <input type="date" name="departure_date" required>
-    <button class="button-primary">Add to planner</button>
+    <button class="button-primary" disabled>Add to planner</button>
   </form>
 </div>
 
@@ -29,7 +29,11 @@
 
 <script id="plan-template" type="text/x-handlebars-template">
   <div class="plan" data-lat="{{latitude}}" data-lng="{{longitude}}">
-    <p class="address">{{address}}</p>
+    <p>
+      {{address}}
+      <div>Arrive: {{arrival_date}}</div>
+      <div>Depart: {{departure_date}}</div>
+    </p>
     <div class="events">
       <header>Events</header>
       <div class="items">

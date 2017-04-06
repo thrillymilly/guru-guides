@@ -13,4 +13,17 @@ class Plan < ApplicationRecord
   after_initialize do
     @address = get_address(latitude, longitude)
   end
+
+  def as_json(options = nil)
+    super({ only: [:longitude, :latitude, :arrival_date, :departure_date],
+            include: { saved_eats: {
+                         include: { eat: {
+                           except: [:id, :created_at, :updated_at] } },
+                           only: [] },
+                       saved_events: {
+                         include: { event: {
+                           except: [:id, :created_at, :updated_at] } },
+                           only: [] } },
+            methods: :address }.merge(options || {}))
+  end
 end

@@ -176,6 +176,10 @@ body {
   margin-bottom: 1em;
 }
 
+.events header, .eats header {
+  cursor: pointer;
+}
+
 .items {
   display: none;
   background: #f0f0f0;
@@ -188,6 +192,13 @@ body {
 .search-form {
   display: inline-block;
   position: relative;
+}
+
+.search-form button:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
 }
 
 .search, .suggestions {
