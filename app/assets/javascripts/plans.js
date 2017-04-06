@@ -78,7 +78,7 @@ $(function() {
     $.ajax({}).done(function() {});
   });
 
-  $('.plan').on('click', 'header', function() {
+  $('.contents').on('click', '.plan header', function() {
     $(this).closest('div').find('.items').slideToggle(300);
   });
 });
