@@ -23,6 +23,8 @@ var showMap = function() {
       map: map
     });
 
+    var otherMarkers = [];
+
     var updateMapLocation = function(latitude, longitude, title) {
       var coords = { lat: latitude, lng: longitude }
 
@@ -42,6 +44,10 @@ var showMap = function() {
 
       if (planElement) {
         updateMapLocation(Number(planElement.dataset.lat), Number(planElement.dataset.lng), planElement.querySelector('.address').textContent);
+
+        // create other markers
+        google.maps.event.addDomListener($('.events')[0], 'click', function() {
+        });
       }
     });
   });
