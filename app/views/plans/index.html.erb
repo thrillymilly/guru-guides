@@ -1,6 +1,9 @@
+<%= javascript_include_tag "map" %>
+<%= javascript_include_tag params[:controller] %>
+
 <div class="search-area">
   <form class="search-form">
-    <input type="hidden" id="selected-location" name="place_id">
+    <input type="hidden" id="selected-location" name="place_id" value="ChIJRdfDBE1d1moRX_AHiiGObXQ">
     <ul class="suggestions"></ul>
     <input type="text" class="search" name="place_name" placeholder="Search for a location" required>
     <label for="">Arrival date</label>
@@ -21,12 +24,12 @@
 </div>
 
 <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVJjOAHWGEr2E1f5AMR2RZDoJ8maw41N4&callback=showMap">
+  src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.secrets.gmap_key %>&callback=showMap">
 </script>
 
 <script id="plan-template" type="text/x-handlebars-template">
-  <div class="plan">
-    <p>{{address}}</p>
+  <div class="plan" data-lat="{{latitude}}" data-lng="{{longitude}}">
+    <p class="address">{{address}}</p>
     <div class="events">
       <header>Events</header>
       <div class="items">

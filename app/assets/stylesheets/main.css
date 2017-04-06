@@ -124,6 +124,10 @@ body {
   padding: .5em;
 }
 
+.plan:hover {
+  background: #a3a9ec;
+}
+
 .events, .eats {
   background: lightblue;
   margin-bottom: 1em;
