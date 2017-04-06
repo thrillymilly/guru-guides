@@ -59,15 +59,12 @@ $(function() {
 
   $suggestions.on('click', 'li', function() {
     $search.val($(this).text());
-    $selectedLocation.val($(this).attr('data-id')).change();
+    $selectedLocation.val($(this).attr('data-id'));
+    $selectedLocation[0].dispatchEvent(new Event('change'));
   });
 
   $('*').click(function() {
     $suggestions.empty();
-  });
-
-  $selectedLocation.change(function() {
-    // update the map
   });
 
   $('.search-form').submit(function(e) {
