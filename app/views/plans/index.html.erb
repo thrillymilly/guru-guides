@@ -4,19 +4,49 @@
     <ul class="suggestions"></ul>
     <input type="text" class="search" name="place_name" placeholder="Search for a location" required>
     <label for="">Arrival date</label>
-    <input type="date" name="arrival_date" value="<%= Date.current %>" required>
+    <input type="date" name="arrival_date" required>
     <label for="">Departure date</label>
-    <input type="date" name="departure_date" value="<%= Date.tomorrow %>" required>
+    <input type="date" name="departure_date" required>
     <button class="button-primary">Add to planner</button>
   </form>
 </div>
 
 <div class="u-cf planner">
-  <%= render "plans" %>
+  <div class="three columns plans">
+    <header>Journey Planner</header>
+    <div class="contents"></div>
+  </div>
   <div class="six columns map">Map goes here</div>
   <div class="three columns events-eats">Search for a location to view what's happening around it</div>
 </div>
 
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVJjOAHWGEr2E1f5AMR2RZDoJ8maw41N4&callback=showMap">
+</script>
+
+<script id="plan-template" type="text/x-handlebars-template">
+  <div class="plan">
+    <p>{{address}}</p>
+    <div class="events">
+      <header>Events</header>
+      <div class="items">
+        {{#each saved_events}}
+        <div>
+          <div>{{this.event.title}}</div>
+          <div>{{this.event.info}}</div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="eats">
+      <header>Eats</header>
+      <div class="items">
+        {{#each saved_eats}}
+        <div>
+          <div>{{saved_eats.eat.title}}</div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
 </script>
