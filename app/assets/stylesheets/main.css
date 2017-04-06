@@ -127,7 +127,9 @@ body {
 
 }
 
-.new-entry {
+.diary-entry {
+  border: 3px solid #666;
+  height: auto;
 
 }
 

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
     post '/comments', to: 'comments#create'
     get '/comments', to: 'comments#show'
+    delete 'comments', to: 'comments#destroy'
 
     get '/plans', to: 'plans#index'
     post '/plans', to: 'plans#create'
