@@ -94,6 +94,7 @@ $(function() {
   var $search = $('.search');
   var $addToPlanButton = $('.search-form button');
   var $selectedLocation = $('#selected-location');
+  var searchThrottle = false;
 
   setDates();
   renderPlans();
@@ -106,7 +107,9 @@ $(function() {
 
     if (input.length === 0) {
       $suggestions.empty();
-    } else if (input.length > 4) {
+    } else if (input.length > 4 && !searchThrottle) {
+      searchThrottle = true;
+
       $.ajax({
         url: '/api/locations/suggestions',
         data: { input: input }
@@ -118,6 +121,8 @@ $(function() {
             $suggestions.append($('<li>').text(result.description).attr('data-id', result.place_id));
           });
         }
+
+        setTimeout(function() { searchThrottle = false; }, 1500);
       });
     }
   });
@@ -156,17 +161,66 @@ $(function() {
     });
   });
 
-  $('.plans').on('click', '.plan', function() {
-    $('.plan').removeClass('selected');
-    $(this).addClass('selected');
+  $('.plans').on('click', '.plan', function(e) {
+    if (!$(e.target).hasClass('delete-btn')) {
+      $('.plan').removeClass('selected');
+      $(this).addClass('selected');
 
-    renderEvents();
-    renderEats();
+      renderEvents();
+      renderEats();
+    }
   });
 
   $('.plans').on('click', '.plan header', function() {
     $(this).siblings('.items').slideToggle(300);
   });
+
+  $('.plans').on('click', 'button', function() {
+    var $dates = $(this).closest('.dates');
+    $dates.slideToggle(300);
+    $dates.siblings('.dates-form').slideToggle(300);
+  });
+
+  $('.plans').on('click', '.cancel-btn', function() {
+    var $datesForm = $(this).closest('.dates-form');
+    $datesForm.slideToggle(300);
+    $datesForm.siblings('.dates').slideToggle(300);
+  });
+
+  $('.plans').on('submit', '.dates-form', function(e) {
+    e.preventDefault();
+
+    var $plan = $(this).closest('.plan');
+    var formData = new FormData($(this)[0]);
+
+    $.ajax({
+      url: '/api/plans/' + $plan.attr('data-id'),
+      method: 'put',
+      data: {
+        lat: $plan.attr('data-lat'),
+        lng: $plan.attr('data-lng'),
+        arrival_date: formData.get('arrival_date'),
+        departure_date: formData.get('departure_date')
+      }
+    }).done(function(result) {
+      if (result.id) {
+        renderPlans();
+      }
+    });
+  });
+
+  $('.plans').on('click', '.delete-btn', function() {
+    $.ajax({
+      url: '/api/plans/' + $(this).closest('.plan').attr('data-id'),
+      method: 'delete'
+    }).done(function(result) {
+      if (result.id) {
+        renderPlans();
+        $('.events .contents').empty();
+        $('.eats .contents').empty();
+      }
+    });
+  })
 
   $('.events-eats .events').on('click', '.add-btn', function() {
     $.ajax({
