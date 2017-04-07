@@ -13,7 +13,7 @@ $(document).ready(function(){
     });
   });
 
-  $('.diary-left').on('click', '.delete-action', deleteComment);
+  $('.diary-action').on('click', deleteComment);
 
   function deleteComment(event) {
     var id = $(this).closest('.diary-entry').data('id');

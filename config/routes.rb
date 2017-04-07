@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     # routes for comments
     post '/comments', to: 'comments#create'
     get '/comments', to: 'comments#show'
-    delete 'comments', to: 'comments#destroy'
+    delete '/comments', to: 'comments#destroy'
 
     # routes for plans
     get '/plans', to: 'plans#index'

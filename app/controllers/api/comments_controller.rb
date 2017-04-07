@@ -13,7 +13,6 @@ class Api::CommentsController < ApplicationController
   end
 
   def destroy
-    byebug
     comment = Comment.find(params[:id])
     if comment.destroy
       redirect_to '/users/{#user.id}'
