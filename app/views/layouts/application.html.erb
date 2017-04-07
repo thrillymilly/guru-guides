@@ -3,7 +3,7 @@
   <head>
     <title>GuruGuides</title>
     <%= csrf_meta_tags %>
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans|Pacifico" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,15 +13,16 @@
   <!--HEADER STARTS HERE  -->
   <div class="top-nav">
     <div class="nav-main-left">
+      <%= image_tag "logo.png", class: "logo" %>
       <a href="/"><h2>Guru Guides</h2></a>
     </div>
     <div class="nav-main-right">
       <%if logged_in? %>
 
-          <%= form_tag '/session', method: 'delete' do %>
-            <button class="nav-button">logout</button>
-          <% end %>
-          <a class="button nav-button account-btn" href=<%="/users/#{current_user.id}"%>>Account</a>
+        <a class="button nav-button account-btn" href=<%="/users/#{current_user.id}"%>>Account</a>
+        <%= form_tag '/session', method: 'delete' do %>
+          <button class="nav-button">logout</button>
+        <% end %>
 
       <% else %>
 
