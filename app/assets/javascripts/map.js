@@ -23,7 +23,7 @@ var showMap = function() {
       position: coords,
       title: result.formatted_address,
       map: map,
-      animation: google.maps.Animation.BOUNCE
+      animation: google.maps.Animation.DROP
     });
 
     var updateMapLocation = function(latitude, longitude, title) {
