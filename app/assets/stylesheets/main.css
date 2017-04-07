@@ -24,22 +24,36 @@ body {
 }
 
 .nav-main-left {
-  width: 50%;
+  width: 40%;
+  padding: 1em;
   display: flex;
-  justify-content: space-around;
   align-items: center;
 }
 
+.nav-main-left > *, .nav-main-right > * {
+  margin: 0 .5em;
+}
+
+.nav-main-left h2 {
+  font-family: 'Pacifico';
+  margin: -.25em 0 0 0;
+  color: #e25014;
+}
 
 .nav-main-right {
-  width: 50%;
+  width: 60%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
+.nav-main-right form > * {
+  margin: 0 .5em;
+}
+
 .logo {
-  height: 80%;
+  height: 50px;
+  overflow: auto;
 }
 
 /*LANDING PAGE*/
@@ -292,16 +306,22 @@ input[type=date] {
 /*LOGGED IN USER*/
 
 .start-guiding {
- text-align: center;
- background-color: #ffffff;
- font-size: 2em;
- width: 300px;
- height: 100px;
- position: absolute;
- left: 50%;
- top: 50%;
- margin-left: -150px;
- margin-top: -50px;
+  text-align: center;
+  background-color: #ffffff;
+  font-size: 2em;
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -50px;
+  line-height: 100px;
+}
+
+.start-guiding:hover {
+  color: white;
+  background: #555555;
 }
 
 /*UTILITY CLASSES*/

@@ -58,7 +58,7 @@
       <header>Events</header>
       <div class="items hidden">
         {{#each saved_events}}
-        <div data-id="{{this.event.id}}" data-lat="{{this.event.latitude}}" data-lng="{{this.event.longitude}}">
+        <div class="item" data-id="{{this.event.id}}" data-lat="{{this.event.latitude}}" data-lng="{{this.event.longitude}}">
           <div class="title">{{this.event.title}}</div>
           <div>{{this.event.info}}</div>
         </div>
@@ -69,7 +69,7 @@
       <header>Eats</header>
       <div class="items hidden">
         {{#each saved_eats}}
-        <div data-id="{{this.eat.id}}" data-lat="{{this.eat.latitude}}" data-lng="{{this.eat.longitude}}">
+        <div class="item" data-id="{{this.eat.id}}" data-lat="{{this.eat.latitude}}" data-lng="{{this.eat.longitude}}">
           <div class="title">{{this.eat.title}}</div>
         </div>
         {{/each}}
