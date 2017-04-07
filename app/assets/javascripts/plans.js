@@ -94,6 +94,7 @@ $(function() {
   var $search = $('.search');
   var $addToPlanButton = $('.search-form button');
   var $selectedLocation = $('#selected-location');
+  var searchThrottle = false;
 
   setDates();
   renderPlans();
@@ -106,7 +107,9 @@ $(function() {
 
     if (input.length === 0) {
       $suggestions.empty();
-    } else if (input.length > 4) {
+    } else if (input.length > 4 && !searchThrottle) {
+      searchThrottle = true;
+
       $.ajax({
         url: '/api/locations/suggestions',
         data: { input: input }
@@ -118,6 +121,8 @@ $(function() {
             $suggestions.append($('<li>').text(result.description).attr('data-id', result.place_id));
           });
         }
+
+        setTimeout(function() { searchThrottle = false; }, 1500);
       });
     }
   });
