@@ -18,12 +18,12 @@
       </div>
   </div>
 
-  <div class="diary row">
-    <h3>Diary</h3>
+  <div class="diary">
+    <h3 class="diary-header">Diary</h3>
     <div class="diary-left">
       <div class="diary-entries">
         <% currentUserComments.each do |comment| %>
-          <div class="diary-entry" data-id="<%= comment.id %>">
+          <div class="diary-entry comment" data-id="<%= comment.id %>">
             <%= comment.body %>
             <button class="delete-action">delete</button>
           </div>
@@ -32,7 +32,7 @@
     </div>
     <div class="diary-right">
       <form class="comment-form">
-        <textarea type="text" name="body" value=""></textarea>
+        <textarea class="" type="text" name="body" value="Log your journey here"></textarea>
         <button>Log</button>
       </form>
     </div>

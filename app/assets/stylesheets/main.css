@@ -112,8 +112,14 @@ body {
 }
 
 .history-card {
+  margin: 0 10%;
   width: 80%;
+}
+
+.plan-card {
+  margin: 10% 2% 10% 2%;
   background-color: #75bbb8;
+
 }
 
 .diary {
@@ -123,28 +129,21 @@ body {
   text-align: center;
 }
 
-.diary-entries {
-
-}
-
 .diary-entry {
-  border: 3px solid #666;
+  border-bottom: 2px solid #666;
   height: auto;
-
-}
-
-.plan-card {
-
-}
-
-.diary-left {
-  float: left;
-  width: 45%;
 }
 
 .diary-right {
-  float: right;
-  width: 45%;
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.comment-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /*JOURNEY PLANNER PAGE*/

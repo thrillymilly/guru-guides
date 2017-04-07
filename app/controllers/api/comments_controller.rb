@@ -15,7 +15,7 @@ class Api::CommentsController < ApplicationController
   def destroy
     comment = Comment.find(params[:id])
     if comment.destroy
-      redirect_to '/users/{#user.id}'
+      render json: comment
     else
       render json: comment.errors
     end

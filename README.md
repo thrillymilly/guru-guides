@@ -10,7 +10,7 @@ hosted on Heroku [here](heroku link will go here).
 Travelling to a new city can be a daunting experience and we often wish we had someone other than google to show us around. In
 Guru Guides you've found a personal guide without the dizzying array of search results. Built to help you navigate the noise of a new city, Guru Guides has a search function that highlights relevant and adventurous suggestions for events and eats wherever you are in the world.
 
-Gain real insight into your next adventure.
+The journey planner page features a search function that populates the accompanied Google Map with events and 'eats' specific to that location. Using the 'add to planner' panel the user can then populate their journey plan with events and eats in the area.
 
 __Features__
   * Login/Sign Up landing page
@@ -26,11 +26,10 @@ Found on our [Trello board](https://trello.com/b/49zsJIbB/guru-guides).
 
 ## Technologies
 
-* Front-end written in: **HTML**, **CSS**, **JavaScript**
-* Back-end written in: **Ruby**
-* Web framework: **Rails**
+* Front-end written in: **HTML5**, **CSS3**, **JavaScript**
+* Back-end written in: **Ruby** **Rails** **Handlebars**
 * Database: **PostgreSQL**
-* ORM framework: **Active Record**
+* APIs: **Google Maps** **Google Places**
 
 ## Wireframes
 ![landing page](http://imgur.com/7r6Yc4Q)
@@ -40,13 +39,28 @@ Found on our [Trello board](https://trello.com/b/49zsJIbB/guru-guides).
 ![user account page](http://imgur.com/wYEQr7K)
 
 ## Approach
-The Front-end is built using a combination of jQuery and the [Skeleton](http://getskeleton.com/) framework.
 
+We created the wireframes as a team and then set out then spent time discussing how the user would interact with the page.
 
+From there we assigned each other tasks for both front and back end and started to build the data-structure.
 
+Using Trello cards we then wrote a sequential list of tasks that we each needed to perform, marked which ones where logic problems and which were DOM and began to code.
+
+As the development process progressed we committed to git frequently to ensure that there were no conflicts.
+
+The Front-end is built using a combination of HTML5, JavaScript/jQuery, the [Skeleton](http://getskeleton.com/) CSS3 framework, Handlebars and .erb templates from Rails.
+
+The Back-end is built using Rails and PostgreSQL.
 
 ## To Do
 
+* Editing/deleting plan
+
+* let user edit/delete account
+
+* Fix the styling
+
+* More dry code
 
 
 ## Lessons learnt
@@ -55,7 +69,7 @@ The Front-end is built using a combination of jQuery and the [Skeleton](http://g
 
 * Test everything - byebugger is your best friend
 
-* Mastering the Google Maps API 
+* Mastering the Google Maps API
 
 ##Future Features
 
@@ -63,4 +77,4 @@ The Front-end is built using a combination of jQuery and the [Skeleton](http://g
 
 * Zomato API - use the Zomato API to populate the eats section
 
-*
+* Restrict events to the location shown
