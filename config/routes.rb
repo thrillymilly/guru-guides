@@ -26,8 +26,7 @@ Rails.application.routes.draw do
     delete '/comments', to: 'comments#destroy'
 
     # routes for plans
-    get '/plans', to: 'plans#index'
-    post '/plans', to: 'plans#create'
+    resources :plans, except: :edit
 
     # routes for events
     get '/events', to: 'events#index'
