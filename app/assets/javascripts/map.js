@@ -23,6 +23,7 @@ var showMap = function() {
       position: coords,
       title: result.formatted_address,
       map: map,
+      animation: google.maps.Animation.DROP
     });
 
     var updateMapLocation = function(latitude, longitude, title) {
@@ -31,6 +32,7 @@ var showMap = function() {
       map.setCenter(coords);
       marker.setPosition(coords);
       marker.setTitle(title);
+      marker.setAnimation(google.maps.Animation.DROP);
     };
 
     google.maps.event.addDomListener($selectedLocation[0], 'change', function() {
@@ -52,41 +54,47 @@ var showMap = function() {
 
       var planElement = e.target.closest('.plan');
 
+
       if (planElement) {
         updateMapLocation(Number(planElement.dataset.lat), Number(planElement.dataset.lng), planElement.querySelector('.address').textContent);
 
         // create other markers
         // events marker
         var events = planElement.querySelectorAll('.events .item');
+        var titles = planElement.querySelectorAll('.events .title')
 
-        var eventImage = { url: 'https://lh3.googleusercontent.com/NU7oZ7XSozdZYdGnZs_64cn0U6hwrkKNfAr-cqFScO40nEgyIcRtvXuzSAZQn_9VqsY=w300',
-        scaledSize: new google.maps.Size(30, 30), // scaled size
-        };
+        titles.forEach(function(title){
           events.forEach(function(event) {
             var coords = { lat: Number(event.dataset.lat), lng: Number(event.dataset.lng) }
 
             var otherMarker = new google.maps.Marker({
-                position: coords,
-                map: map,
-                icon: eventImage
+              position: coords,
+              map: map,
+              label: 'E',
+              title: title.innerHTML,
+              animation: google.maps.Animation.DROP
             })
-            markers.push(otherMarker);
+              markers.push(otherMarker);
+            });
           });
 
         //eats marker
-        eats = planElement.querySelectorAll('.eats .item');
+        var eats = planElement.querySelectorAll('.eats .item');
+        var titles = planElement.querySelectorAll('.eats .title');
 
-        var eatsImage = { url: 'https://cdn2.iconfinder.com/data/icons/places-4/100/food_place_marker_location_restaurant_eat_fork_knife-512.png',
-        scaledSize: new google.maps.Size(30, 30), // scaled size
-        };
-        eats.forEach(function(eat) {
-          var coords = { lat: Number(eat.dataset.lat), lng: Number(eat.dataset.lng) }
-          var otherMarker = new google.maps.Marker({
-            position: coords,
-            map: map,
-            icon: eatsImage
+
+        titles.forEach(function(title){
+          eats.forEach(function(eat) {
+            var coords = { lat: Number(eat.dataset.lat), lng: Number(eat.dataset.lng) }
+            var otherMarker = new google.maps.Marker({
+              position: coords,
+              map: map,
+              label: 'F',
+              title: title.innerHTML,
+              animation: google.maps.Animation.DROP
+            });
+            markers.push(otherMarker);
           });
-          markers.push(otherMarker);
         });
       }
     });
