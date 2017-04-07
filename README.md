@@ -5,7 +5,7 @@ Guru Guides - A web application built to inspire adventure and engagement with n
 
 hosted on Heroku [here](heroku link will go here).
 
-##Overview
+## Overview
 
 Travelling to a new city can be a daunting experience and we often wish we had someone other than google to show us around. In
 Guru Guides you've found a personal guide without the dizzying array of search results. Built to help you navigate the noise of a new city, Guru Guides has a search function that highlights relevant and adventurous suggestions for events and eats wherever you are in the world.
@@ -32,11 +32,11 @@ Found on our [Trello board](https://trello.com/b/49zsJIbB/guru-guides).
 * APIs: **Google Maps** **Google Places**
 
 ## Wireframes
-![landing page](http://imgur.com/7r6Yc4Q)
-![planner page](http://imgur.com/UzRKRkJ)
-![event/eats/add bar](http://imgur.com/zDOmxbp)
-![locals chat](http://imgur.com/0Too4Eu)
-![user account page](http://imgur.com/wYEQr7K)
+![landing page](http://i.imgur.com/7r6Yc4Q.png)
+![planner page](http://i.imgur.com/UzRKRkJ.png)
+![event/eats/add bar](http://i.imgur.com/zDOmxbp.png)
+![locals chat](http://i.imgur.com/0Too4Eu.png)
+![user account page](http://i.imgur.com/wYEQr7K.png)
 
 ## Approach
 
@@ -71,7 +71,7 @@ The Back-end is built using Rails and PostgreSQL.
 
 * Mastering the Google Maps API
 
-##Future Features
+## Future Features
 
 * Locals - a place for the user to talk directly with people from the area they are visiting.
 
