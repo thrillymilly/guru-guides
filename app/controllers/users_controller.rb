@@ -13,16 +13,16 @@ class UsersController < ApplicationController
     user.password = params[:password]
 
     if user.save
-      redirect_to "/users/#{user.id}"
+      log_in(user)
     else
       if user.errors.messages.key?(:email)
         flash[:error] = "Email has already been taken."
       else
         flash[:error] = "Check that all required details have been filled in correctly."
       end
-
-      redirect_to :root
     end
+
+    redirect_to :root
   end
 
   def show

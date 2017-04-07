@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :require_login
 
-  helper_method :current_user, :logged_in?, :log_out, :get_place_details
+  helper_method :current_user, :logged_in?, :log_in, :log_out, :get_place_details
 
   def current_user
     User.find_by(id: session[:user_id])
@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!current_user
+  end
+
+  def log_in(user)
+    session[:user_id] = user.id
   end
 
   def log_out

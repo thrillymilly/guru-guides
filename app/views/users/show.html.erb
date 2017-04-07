@@ -5,36 +5,36 @@
     <div class="greeting">Hey there <%= current_user.full_name %> </div>
   </div>
 
-    <div class="history">
-      <h3>History</h3>
-        <div class="history-card">
-          <% current_user.plans.each do |plan| %>
-            <div class="plan-card">
-              Address: <%= plan.address %><br>
-              Date of arrival: <%= plan.arrival_date %><br>
-              Date of departure: <%= plan.departure_date %><br>
-            </div>
-          <% end %>
-        </div>
-    </div>
-
-    <div class="diary row">
-      <h3>Diary</h3>
-      <div class="diary-left">
-        <span class="diary-entries">
-          <% currentUserComments.each do |comment| %>
-            <%= comment.body %>
-          <% end %>
-        </span>
+  <div class="history">
+    <h3>History</h3>
+      <div class="history-card">
+        <% current_user.plans.each do |plan| %>
+          <div class="plan-card">
+            Address: <%= plan.address %><br>
+            Date of arrival: <%= plan.arrival_date %><br>
+            Date of departure: <%= plan.departure_date %><br>
+          </div>
+        <% end %>
       </div>
-      <div class="diary-right">
-        <form class="comment-form">
-          <textarea type="text" name="body" value=""></textarea>
-          <button>Log</button>
-        </form>
-      </div>
-      </div>
-    </div>
   </div>
 
-</container>
+  <div class="diary row">
+    <h3>Diary</h3>
+    <div class="diary-left">
+      <div class="diary-entries">
+        <% currentUserComments.each do |comment| %>
+          <div class="diary-entry" data-id="<%= comment.id %>">
+            <%= comment.body %>
+            <button class="delete-action">delete</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="diary-right">
+      <form class="comment-form">
+        <textarea type="text" name="body" value=""></textarea>
+        <button>Log</button>
+      </form>
+    </div>
+  </div>
+</div>

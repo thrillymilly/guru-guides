@@ -127,7 +127,9 @@ body {
 
 }
 
-.new-entry {
+.diary-entry {
+  border: 3px solid #666;
+  height: auto;
 
 }
 
@@ -157,9 +159,10 @@ body {
   border: 3px solid #666;
   border-radius: 5px;
   background: #e3e9ec;
+  max-height: 500px;
 }
 
-.plans > header {
+.plans > header, .events-eats > header {
   height: 3em;
   background: #c0cfd6;
   border-bottom: 2px solid #666;
@@ -167,18 +170,22 @@ body {
   text-align: center;
 }
 
-.planner .contents {
-  height: calc(100% - 3em);
+.contents {
+  max-height: calc(500px - 4em);
   overflow: auto;
 }
 
-.plan {
+.contents > div {
   border-bottom: 1px solid black;
   padding: .5em;
 }
 
 .plan:hover {
   background: #a3a9ec;
+}
+
+.plan.selected {
+  background: #858dec;
 }
 
 .details {
@@ -195,8 +202,23 @@ body {
 }
 
 .items {
-  display: none;
   background: #f0f0f0;
+}
+
+.items > div {
+  border-bottom: 1px solid black;
+}
+
+.items > div:last-of-type {
+  border: 0;
+}
+
+.events-eats {
+  overflow: auto;
+}
+
+.status-added {
+  color: green;
 }
 
 .search-area {
@@ -217,6 +239,14 @@ body {
 
 .search, .suggestions {
   width: 30em;
+}
+
+input[type=date] {
+  height: 38px;
+  padding: 6px 10px;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  font-size: 11px;
 }
 
 .suggestions {
@@ -273,4 +303,10 @@ body {
  top: 50%;
  margin-left: -150px;
  margin-top: -50px;
+}
+
+/*UTILITY CLASSES*/
+
+.hidden {
+  display: none
 }

@@ -20,21 +20,26 @@ Rails.application.routes.draw do
       get '/suggestions', to: 'locations#suggest'
     end
 
+    # routes for comments
     post '/comments', to: 'comments#create'
     get '/comments', to: 'comments#show'
+    delete '/comments', to: 'comments#destroy'
 
-    get '/plans', to: 'plans#index'
-    post '/plans', to: 'plans#create'
-  end
+    # routes for plans
+    resources :plans, except: :edit
 
-  namespace :api do
-    #events api
-    namespace :events do
-      get '/events/:id', to: 'events#show'
-    end
+    # routes for events
+    get '/events', to: 'events#index'
+
+    # routes for eats
+    get '/eats', to: 'eats#index'
+
+    # routes for saved_events
+    post '/saved_events', to: 'saved_events#create'
+
+    # routes for saved_eats
+    post '/saved_eats', to: 'saved_eats#create'
   end
 
   root 'pages#index'
 end
-
-  #routes for comments

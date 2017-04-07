@@ -5,7 +5,7 @@ class SessionController < ApplicationController
     user = User.find_by(email: params[:email])
 
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+      log_in(user)
     end
 
     redirect_to :root
