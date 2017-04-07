@@ -40,8 +40,19 @@
   <div class="plan" data-id="{{id}}" data-lat="{{latitude}}" data-lng="{{longitude}}">
     <div class="details">
       <p class="address">{{address}}</p>
-      <div>Arrive: {{arrival_date}}</div>
-      <div>Depart: {{departure_date}}</div>
+      <div class="dates">
+        <div>Arrive: {{arrival_date}}</div>
+        <div>Depart: {{departure_date}}</div>
+        <button class="button-primary">Edit dates</button>
+      </div>
+      <form class="dates-form hidden">
+        <label for="">Arrival date</label>
+        <input type="date" name="arrival_date" value="{{arrival_date}}" required>
+        <label for="">Departure date</label>
+        <input type="date" name="departure_date" value="{{departure_date}}" required>
+        <button type="button" class="cancel-btn">Cancel</button>
+        <button class="update-btn">Update</button>
+      </form>
     </div>
     <div class="events">
       <header>Events</header>
@@ -64,6 +75,7 @@
         {{/each}}
       </div>
     </div>
+    <button class="button-primary delete-btn">Delete plan</button>
   </div>
 </script>
 
